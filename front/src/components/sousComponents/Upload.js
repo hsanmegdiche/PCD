@@ -1,70 +1,79 @@
 import axios from "axios";
 import React, { Component } from "react";
-class Upload extends Component {
-  state = {
-    // Initially, no file is selected
-    selectedFile: null,
-  };
+const state = {
+  // Initially, no file is selected
+  selectedFile: null,
+};
 
-  // On file select (from the pop up)
-  onFileChange = (event) => {
-    // Update the state
-    this.setState({ selectedFile: event.target.file[0] });
-  };
+// On file select (from the pop up)
+const onFileChange = (e) => {
+  // Update the state
+  state.selectedFile = e.target.files[0];
+};
 
-  // On file upload (click the upload button)
-  onFileUpload = () => {
-    // Create an object of formData
-    const formData = new FormData();
+// On file upload (click the upload button)
+const onFileUpload = async (e) => {
+  if (!state.selectedFile) return alert("File not exist.");
 
-    // Update the formData object
-    formData.append("file", this.state.selectedFile);
+  if (state.selectedFile.size > 100000 * 100000)
+    return alert("Size too large!");
 
-    // Details of the uploaded file
-    console.log(this.state.selectedFile);
+  if (
+    state.selectedFile.type !== "application/pdf" &&
+    state.selectedFile.type !== "application/pdf"
+  )
+    // 1mb
+    return alert("File format is incorrect.");
+  e.preventDefault();
 
-    // Request made to the backend api
-    // Send formData object
-    axios.post("api/upload", formData, {
-      headers: { "content-type": "multipart/form-data" },
-    });
-  };
+  // Create an object of formData
+  const formData = new FormData();
 
-  // File content to be displayed after
-  // file upload is complete
-  fileData = () => {
-    if (this.state.selectedFile) {
-      return (
-        <div>
-          <h2>File Details:</h2>
-          <p>File Name: {this.state.selectedFile.name}</p>
-          <p>File Type: {this.state.selectedFile.type}</p>
-          <p>
-            Last Modified:{" "}
-            {this.state.selectedFile.lastModifiedDate.toDateString()}
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <br />
-        </div>
-      );
-    }
-  };
+  // Update the formData object
+  formData.append("file", state.selectedFile);
 
-  render() {
+  // Details of the uploaded file
+
+  // Request made to the backend api
+  // Send formData object
+  await axios.post("api/upload", formData, {
+    headers: { "content-type": "multipart/form-data" },
+  });
+  //console.log(res);
+};
+
+// File content to be displayed after
+// file upload is complete
+const fileData = () => {
+  if (state.selectedFile) {
     return (
       <div>
-        <div>
-          <input type="file" name="file" onChange={this.onFileChange} />
-          <button onClick={this.onFileUpload}>Upload!</button>
-        </div>
-        {this.fileData()}
+        <h2>File Details:</h2>
+        <p>File Name: {state.selectedFile.name}</p>
+        <p>File Type: {state.selectedFile.type}</p>
+        <p>
+          Last Modified: {state.selectedFile.lastModifiedDate.toDateString()}
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <br />
       </div>
     );
   }
+};
+function Upload() {
+  return (
+    <div>
+      <div>
+        <input type="file" name="file" onChange={onFileChange} />
+        <button onClick={onFileUpload}>Upload!</button>
+      </div>
+      {fileData()}
+    </div>
+  );
 }
 
 export default Upload;
