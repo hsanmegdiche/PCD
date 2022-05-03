@@ -1,14 +1,8 @@
 import React, { useContext } from "react";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-import { AppBar, Toolbar, IconButton, ThemeProvider } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import HomeIcon from "@material-ui/icons/Home";
-import ButtonMezyen from "./sousComponents/ButtonMezyen";
+import Album from "../Album";
 import { GlobalState } from "./GlobalState";
-import { createTheme } from "@material-ui/core";
-
-function Home() {
+import ButtonMezyen from "./sousComponents/ButtonMezyen";
+function Home1() {
   return (
     <div>
       <img
@@ -24,6 +18,11 @@ function Home() {
       <ButtonMezyen />
     </div>
   );
+}
+function Home() {
+  const state = useContext(GlobalState);
+  const [isLogged] = state.userApi.isLogged;
+  return isLogged ? <Album /> : <Home1 />;
 }
 
 export default Home;

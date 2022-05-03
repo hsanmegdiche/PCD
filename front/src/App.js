@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Home from "./components/Home.js";
 import Signup from "./components/Signup";
@@ -17,7 +17,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/asba" element={<Album />} />
         <Route path="/getuser" element={<UserApi />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
