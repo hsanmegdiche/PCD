@@ -1,10 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import { Button, AppBar, IconButton, Toolbar } from "@mui/material";
-=======
-import { AppBar, IconButton, Toolbar } from "@mui/material";
->>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
 import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import { GlobalState } from "../components/GlobalState";

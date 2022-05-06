@@ -5,22 +5,12 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
-<<<<<<< HEAD
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-=======
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { CardActionArea } from "@mui/material";
 import PlusCard from "./components/sousComponents/PlusCard";
 
 const cards = [1, 2, 3, 4, "a"];
->>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
 
 export default function Album() {
   return (
@@ -61,10 +51,6 @@ export default function Album() {
                 </Card>
               </Grid>
             ))}
-<<<<<<< HEAD
-=======
-            <PlusCard />
->>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
           </Grid>
         </Container>
       </main>
