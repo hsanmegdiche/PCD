@@ -1,13 +1,13 @@
 const mongoose =require('mongoose')
 const RecruiterSchema = new mongoose.Schema ({
 
-    nom:{
+    name:{
         type:String,
         required:true,
         trim: true
 
     },
-    prenom:{
+    lastname:{
         type:String,
         required:true,
         trim: true

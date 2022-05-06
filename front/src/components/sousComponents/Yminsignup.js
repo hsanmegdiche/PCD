@@ -33,9 +33,22 @@ class Yminsignup extends React.Component {
         alert(err.response.data.msg)
     }
   }
-  else {
-    alert('heh')
-  }
+  else if (this.state.role==="Recruiter" && this.state.emailerror === false && this.state.confirmerror === false)        
+   {
+    try {
+
+    
+   await axios.post("/recruiter/signup",{name:this.state.name,lastname:this.state.lastname,email:this.state.email,password:this.state.password})
+
+
+    localStorage.setItem('firstLogin', true)
+
+    
+    window.location.href = "http://localhost:3000/login"
+  } catch (err) {
+    alert(err.response.data.msg)
+}
+}
 
     }
   
