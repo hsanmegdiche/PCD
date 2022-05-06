@@ -32,10 +32,15 @@ app.use(
   })
 );
 app.use(cookieParser());
+<<<<<<< HEAD
 app.use("/user", require("./routes/user"));
 app.use("/api", require("./routes/upload"));
 app.use("/recruiter", require("./routes/recruiter"));
 
+=======
+app.use("/user", require("./routes/auth"));
+app.use("/api", require("./routes/upload"));
+>>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
 
 app.listen(PORT, () => {
   console.log("serveur is running on port ", PORT);

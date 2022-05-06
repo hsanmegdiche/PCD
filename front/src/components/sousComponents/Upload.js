@@ -1,5 +1,9 @@
 import axios from "axios";
+<<<<<<< HEAD
 import React, { Component } from "react";
+=======
+import React from "react";
+>>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
 const state = {
   // Initially, no file is selected
   selectedFile: null,

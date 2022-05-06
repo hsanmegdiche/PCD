@@ -1,11 +1,16 @@
 const jwt = require("jsonwebtoken");
+<<<<<<< HEAD
 const Student = require("../models/Student");
 const Recruiter = require('../models/recruiter')
 
+=======
+const User = require("../models/user");
+>>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
 const bcrypt = require("bcrypt");
 const userCtrl = {
   register: async (req, res) => {
     try {
+<<<<<<< HEAD
       const { name,lastname, email, password } = req.body;
 
       const user = await Recruiter.findOne({email})
@@ -21,6 +26,23 @@ const userCtrl = {
       const newUser = new Student({
         name,
         lastname,
+=======
+      const { username, email, password } = req.body;
+
+      const user = await User.findOne({ email });
+      if (user)
+        return res.status(400).json({ msg: "The email already exists." });
+
+      if (password.length < 6)
+        return res
+          .status(400)
+          .json({ msg: "Password is at least 6 characters long." });
+
+      // Password Encryption
+      const passwordHash = await bcrypt.hash(password, 10);
+      const newUser = new User({
+        username,
+>>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
         email,
         password: passwordHash,
       });
@@ -36,6 +58,7 @@ const userCtrl = {
     try {
       const { email, password } = req.body;
 
+<<<<<<< HEAD
       const user = await Student.findOne({ email });
       const us = await Recruiter.findOne({email})
 
@@ -49,6 +72,12 @@ const userCtrl = {
       const isMatch = await bcrypt.compare(password, user.password);
      }
 
+=======
+      const user = await User.findOne({ email });
+      if (!user) return res.status(400).json({ msg: "User does not exist." });
+
+      const isMatch = await bcrypt.compare(password, user.password);
+>>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
       if (!isMatch) return res.status(400).json({ msg: "Incorrect password." });
 
       // If login success , create access token and refresh token
@@ -85,7 +114,11 @@ const userCtrl = {
   },
   getUser: async (req, res) => {
     try {
+<<<<<<< HEAD
       const user = await Student.findById(req.user.id).select("-password");
+=======
+      const user = await User.findById(req.user.id).select("-password");
+>>>>>>> 515ada2b4e0e27a6c7d7af157568f3251ddc532c
       if (!user) return res.status(400).json({ msg: "User does not exist." });
 
       res.json(user);
