@@ -34,7 +34,7 @@ app.use(
 app.use(cookieParser());
 app.use("/user", require("./routes/user"));
 app.use("/api", require("./routes/upload"));
-app.use("/recruiter", require("./routes/recruiter"));
+//app.use("/recruiter", require("./routes/recruiter"));
 
 app.listen(PORT, () => {
   console.log("serveur is running on port ", PORT);

@@ -24,7 +24,7 @@ class Yminlogin extends React.Component {
     e.preventDefault();
     if (this.state.emailerror === false) {
       try {
-        await axios.post("/user/login", {
+        const res = await axios.post("/user/login", {
           email: this.state.email,
           password: this.state.password,
         });

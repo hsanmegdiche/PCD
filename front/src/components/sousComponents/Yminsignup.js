@@ -8,7 +8,7 @@ class Yminsignup extends React.Component {
   constructor() {
     super();
     this.state = {
-      role: "student",
+      role: "Student",
       emailerror: true,
       confirmerror: true,
       password: "",
@@ -24,41 +24,19 @@ class Yminsignup extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      this.state.role === "student" &&
-      this.state.emailerror === false &&
-      this.state.confirmerror === false
-    ) {
+    if (this.state.emailerror === false && this.state.confirmerror === false) {
       try {
         await axios.post("/user/signup", {
           name: this.state.name,
           lastname: this.state.lastname,
           email: this.state.email,
           password: this.state.password,
+          role: this.state.role,
         });
 
         localStorage.setItem("firstLogin", true);
 
-        window.location.href = "http://localhost:3000/login";
-      } catch (err) {
-        alert(err.response.data.msg);
-      }
-    } else if (
-      this.state.role === "Recruiter" &&
-      this.state.emailerror === false &&
-      this.state.confirmerror === false
-    ) {
-      try {
-        await axios.post("/recruiter/signup", {
-          name: this.state.name,
-          lastname: this.state.lastname,
-          email: this.state.email,
-          password: this.state.password,
-        });
-
-        localStorage.setItem("firstLogin", true);
-
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = "/login";
       } catch (err) {
         alert(err.response.data.msg);
       }
@@ -141,10 +119,11 @@ class Yminsignup extends React.Component {
               Your role <br />
               <br />
               <select
+                name="role"
                 value={this.state.value}
                 onChange={(e) => this.handlerole(e)}
               >
-                <option value="student">student</option>
+                <option value="Student">Student</option>
                 <option value="Recruiter">Recruiter</option>
               </select>
             </label>

@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const userCtrl = {
   register: async (req, res) => {
     try {
-      const { name, lastname, email, password } = req.body;
+      const { name, lastname, email, password, role } = req.body;
 
       const user = await Recruiter.findOne({ email });
       const us = await Student.findOne({ email });
@@ -20,15 +20,25 @@ const userCtrl = {
 
       // Password Encryption
       const passwordHash = await bcrypt.hash(password, 10);
-      const newUser = new Student({
-        name,
-        lastname,
-        email,
-        password: passwordHash,
-      });
+      if (role === "Student") {
+        const newUser = new Student({
+          name,
+          lastname,
+          email,
+          password: passwordHash,
+        });
+        await newUser.save();
+      } else if (role === "Recruiter") {
+        const newUser = new Recruiter({
+          name,
+          lastname,
+          email,
+          password: passwordHash,
+        });
+        await newUser.save();
+      }
 
       // Save mongodb
-      await newUser.save();
       return res.json({ msg: "mriguel" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -45,21 +55,30 @@ const userCtrl = {
         return res.status(400).json({ msg: "User does not exist." });
       if (us) {
         const isMatch = await bcrypt.compare(password, us.password);
-      }
-      if (user) {
+      } else if (user) {
         const isMatch = await bcrypt.compare(password, user.password);
       } else return res.status(400).json({ msg: "Incorrect password." });
 
       // If login success , create access token and refresh token
-      const accesstoken = createAccessToken({ id: user._id });
-      const refreshtoken = createRefreshToken({ id: user._id });
-
-      res.cookie("refreshtoken", refreshtoken, {
-        httpOnly: true,
-        path: "/user/refresh_token",
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
-      });
-      res.json({ status: "OK", user: accesstoken });
+      if (user) {
+        const accesstoken = createAccessToken({ id: user._id });
+        const refreshtoken = createRefreshToken({ id: user._id });
+        res.cookie("refreshtoken", refreshtoken, {
+          httpOnly: true,
+          path: "/user/refresh_token",
+          maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
+        });
+        res.json({ status: "OK", user: accesstoken });
+      } else if (us) {
+        const accesstoken = createAccessToken({ id: us._id });
+        const refreshtoken = createRefreshToken({ id: us._id });
+        res.cookie("refreshtoken", refreshtoken, {
+          httpOnly: true,
+          path: "/user/refresh_token",
+          maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
+        });
+        res.json({ status: "OK", user: accesstoken });
+      }
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -85,9 +104,10 @@ const userCtrl = {
   getUser: async (req, res) => {
     try {
       const user = await Student.findById(req.user.id).select("-password");
-      if (!user) return res.status(400).json({ msg: "User does not exist." });
-
-      res.json(user);
+      const us = await Recruiter.findById(req.user.id).select("-password");
+      if (user) res.json(user);
+      else if (us) res.json(us);
+      else return res.status(400).json({ msg: "User does not exist." });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

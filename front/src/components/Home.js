@@ -22,7 +22,8 @@ function Home1() {
 function Home() {
   const state = useContext(GlobalState);
   const [isLogged] = state.userApi.isLogged;
-  return isLogged ? <Album /> : <Home1 />;
+  const [isAdmin] = state.userApi.isAdmin;
+  return <div>{isLogged ? <Album /> : <Home1 />}</div>;
 }
 
 export default Home;

@@ -17,7 +17,7 @@ function UserApi(token) {
           console.log(res);
 
           setIsLogged(true);
-
+          setIsAdmin(res.data.role === 1);
           setUser(res.data);
         } catch (err) {
           alert(err.data.msg);
@@ -43,6 +43,7 @@ function UserApi(token) {
     }
   };
   return {
+    isAdmin: [isAdmin, setIsAdmin],
     isLogged: [isLogged, setIsLogged],
     user: [user, setUser],
   };
