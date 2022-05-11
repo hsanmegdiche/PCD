@@ -29,7 +29,7 @@ class Yminlogin extends React.Component {
           password: this.state.password,
         });
         localStorage.setItem("firstLogin", true);
-        window.location.href = "/";
+        window.location.href = "/contine_signup";
       } catch (err) {
         alert(err.response.data.msg);
       }

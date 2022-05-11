@@ -5,6 +5,7 @@ function UserApi(token) {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [user, setUser] = useState("");
+  const [id, setId] = useState(0);
   useEffect(() => {
     if (token) {
       const getUser = async () => {
@@ -15,10 +16,10 @@ function UserApi(token) {
             },
           });
           console.log(res);
-
           setIsLogged(true);
           setIsAdmin(res.data.role === 1);
           setUser(res.data);
+          setId(res.data._id);
         } catch (err) {
           alert(err.data.msg);
         }
@@ -46,6 +47,7 @@ function UserApi(token) {
     isAdmin: [isAdmin, setIsAdmin],
     isLogged: [isLogged, setIsLogged],
     user: [user, setUser],
+    id: [id, setId],
   };
 }
 

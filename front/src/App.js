@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import Home from "./components/Home.js";
 import Signup from "./components/Signup";
+import Form from "./components/Contine_signup";
 import Login from "./components/Login.js";
 import UserApi from "./components/UserApi";
 import AboutThis from "./components/AboutThis.js";
@@ -16,6 +17,7 @@ function App() {
     <DataProvider>
       <Header />
       <Routes>
+        <Route path="/contine_signup" element={<Form />} />
         <Route path="/" element={<Home />} />
         <Route path="/getuser" element={<UserApi />} />
         <Route path="/signup" element={<Signup />} />
