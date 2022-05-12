@@ -30,9 +30,42 @@ const ProductImgStyle = styled("img")({
 ShopProductCard.propTypes = {
   product: PropTypes.object,
 };
+function Item(props) {
+  const { sx, ...other } = props;
+  return (
+    <Box
+      sx={{
+        p: 1,
+        m: 1,
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : 'grey.100'),
+        color: (theme) => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800'),
+        border: '0.4px solid',
+        borderColor: (theme) =>
+          theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+        borderRadius: 2,
+        fontSize: '0.7rem',
+        fontWeight: '700',
+        ...sx,
+      }}
+      {...other}
+    />
+  );
+}
 
+Item.propTypes = {
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool]),
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+};
 export default function ShopProductCard({ product }) {
-  const { name, cover, status } = product;
+  const { name, cover, status,skills } = product;
 
   return (
     <Card>
@@ -58,7 +91,8 @@ export default function ShopProductCard({ product }) {
       <Stack spacing={2} sx={{ p: 3 }}>
         <Link to="#" color="inherit" underline="hover" component={RouterLink}>
           <Typography variant="subtitle2" noWrap>
-            {name}
+          <Box sx={{textTransform: 'uppercase' , fontWeight: 'bold', m: 1 }}>{name}
+</Box>
           </Typography>
         </Link>
 
@@ -76,7 +110,19 @@ export default function ShopProductCard({ product }) {
                 textDecoration: "line-through",
               }}
             ></Typography>
-            asbaa,asbaaa,zeby
+            <Box
+        sx={{
+          flexWrap: 'wrap',
+          display: 'flex',
+          flexDirection: 'row',
+          p: 0,
+          m: 0,
+          bgcolor: 'background.paper',
+          borderRadius: 0,
+        }}
+      >
+            {skills.map((s)=><Item>{s}</Item>)}
+            </Box>
           </Typography>
         </Stack>
       </Stack>

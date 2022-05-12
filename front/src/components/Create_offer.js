@@ -184,7 +184,7 @@ const JD = [
     { label: 'full stack developer' },
     { label: 'frontend developer' },
     { label: 'backend developer ' },
-    { label: 'artificial intelligence engineer' },
+    { label: 'machine learning engineer' },
     { label: 'data scientist' },
     { label: 'embedded software engineer' },
     { label: 'security analyst' },
