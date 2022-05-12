@@ -4,17 +4,17 @@ import { withStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Container from "@material-ui/core/Container";
 import Typography from "./Typography";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 //import { Link as RouterLink } from 'react-router-dom';
 const styles = (theme) => ({
   root: {
     marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(4)
+    marginBottom: theme.spacing(4),
   },
   images: {
     marginTop: theme.spacing(8),
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   imageWrapper: {
     position: "relative",
@@ -24,20 +24,20 @@ const styles = (theme) => ({
     height: "10vh",
     [theme.breakpoints.down("sm")]: {
       width: "100% !important",
-      height: 100
+      height: 100,
     },
     "&:hover": {
-      zIndex: 1
+      zIndex: 1,
     },
     "&:hover $imageBackdrop": {
-      opacity: 0.15
+      opacity: 0.15,
     },
     "&:hover $imageMarked": {
-      opacity: 0
+      opacity: 0,
     },
     "&:hover $imageTitle": {
-      border: "4px solid currentColor"
-    }
+      border: "4px solid currentColor",
+    },
   },
   imageButton: {
     position: "absolute",
@@ -48,7 +48,7 @@ const styles = (theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
   },
   imageSrc: {
     position: "absolute",
@@ -57,7 +57,7 @@ const styles = (theme) => ({
     top: 0,
     bottom: 0,
     backgroundSize: "cover",
-    backgroundPosition: "center 40%"
+    backgroundPosition: "center 40%",
   },
   imageBackdrop: {
     position: "absolute",
@@ -66,12 +66,12 @@ const styles = (theme) => ({
     top: 0,
     bottom: 0,
     background: theme.palette.common.black,
-    opacity: 0.30,
-    transition: theme.transitions.create("opacity")
+    opacity: 0.3,
+    transition: theme.transitions.create("opacity"),
   },
   imageTitle: {
     position: "relative",
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px 14px`
+    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px 14px`,
   },
   imageMarked: {
     height: 3,
@@ -80,8 +80,8 @@ const styles = (theme) => ({
     position: "absolute",
     bottom: -2,
     left: "calc(50% - 9px)",
-    transition: theme.transitions.create("opacity")
-  }
+    transition: theme.transitions.create("opacity"),
+  },
 });
 
 function ButtonMezyen(props) {
@@ -89,27 +89,23 @@ function ButtonMezyen(props) {
 
   const images = [
     {
-      url:
-        "https://docs.microsoft.com/en-us/windows/apps/design/style/images/header-color.svg",
+      url: "https://docs.microsoft.com/en-us/windows/apps/design/style/images/header-color.svg",
       title: "Login",
       width: "40%",
-      siteurl: "/login"
+      siteurl: "/login",
     },
     {
-      url:
-        "https://images.squarespace-cdn.com/content/v1/5bfa44e35417fc9e067ad10e/1564371966162-F9WJ9BEYL7W7D94060MP/orange1.png?format=1500w",
+      url: "https://images.squarespace-cdn.com/content/v1/5bfa44e35417fc9e067ad10e/1564371966162-F9WJ9BEYL7W7D94060MP/orange1.png?format=1500w",
       title: "Sign Up",
       width: "20%",
-      siteurl: "/signup"
+      siteurl: "/signup",
     },
     {
-      url:
-        "https://docs.microsoft.com/en-us/windows/apps/design/style/images/header-color.svg",
+      url: "https://docs.microsoft.com/en-us/windows/apps/design/style/images/header-color.svg",
       title: "Do it anonymously",
       width: "40%",
-      siteurl: "/anonymous"
+      siteurl: "/anonymous",
     },
-
   ];
 
   return (
@@ -120,14 +116,15 @@ function ButtonMezyen(props) {
             key={image.title}
             className={classes.imageWrapper}
             style={{
-              width: image.width
+              width: image.width,
             }}
-            component={Link} to={image.siteurl}
+            component={Link}
+            to={image.siteurl}
           >
             <div
               className={classes.imageSrc}
               style={{
-                backgroundImage: `url(${image.url})`
+                backgroundImage: `url(${image.url})`,
               }}
             />
             <div className={classes.imageBackdrop} />
@@ -150,7 +147,7 @@ function ButtonMezyen(props) {
 }
 
 ButtonMezyen.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(ButtonMezyen);

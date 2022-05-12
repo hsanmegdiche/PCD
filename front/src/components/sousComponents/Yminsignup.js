@@ -91,7 +91,7 @@ class Yminsignup extends React.Component {
 
   render() {
     return (
-      <div sstyle={{ width: "400px", paddingLeft: "400px" }}>
+      <div style={{ width: "400px", paddingLeft: "400px" }}>
         <pre>
           <Star texte="Créer un nouveau compte" />
           <form>

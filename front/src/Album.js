@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 import { CardActionArea } from "@mui/material";
 import PlusCard from "./components/sousComponents/PlusCard";
 
-const cards = [1, 2, 3, 4, "a"];
+const cards = [1, 2, 3, 4, 5, 6];
 
 export default function Album() {
   return (
@@ -33,9 +33,9 @@ export default function Album() {
                     component="img"
                     sx={{
                       // 16:9
-                      pt: "56.25%",
+                      pt: "10%",
                     }}
-                    image="https://source.unsplash.com/random"
+                    image=""
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
