@@ -37,14 +37,16 @@ function Item(props) {
       sx={{
         p: 0.3,
         m: 0.3,
-        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : 'grey.100'),
-        color: (theme) => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800'),
-        border: '1px solid',
+        bgcolor: (theme) =>
+          theme.palette.mode === "dark" ? "#101010" : "grey.100",
+        color: (theme) =>
+          theme.palette.mode === "dark" ? "grey.300" : "grey.800",
+        border: "1px solid",
         borderColor: (theme) =>
-          theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+          theme.palette.mode === "dark" ? "grey.800" : "grey.300",
         borderRadius: 2,
-        fontSize: '0.7rem',
-        fontWeight: '700',
+        fontSize: "0.7rem",
+        fontWeight: "700",
         ...sx,
       }}
       {...other}
@@ -58,14 +60,14 @@ Item.propTypes = {
    */
   sx: PropTypes.oneOfType([
     PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool]),
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
     ),
     PropTypes.func,
     PropTypes.object,
   ]),
 };
 export default function ShopProductCard({ product }) {
-  const { name, cover, status,skills } = product;
+  const { name, cover, status, skills } = product;
 
   return (
     <Card>
@@ -91,8 +93,9 @@ export default function ShopProductCard({ product }) {
       <Stack spacing={2} sx={{ p: 3 }}>
         <Link to="#" color="inherit" underline="hover" component={RouterLink}>
           <Typography variant="subtitle2" noWrap>
-          <Box sx={{textTransform: 'uppercase' , fontWeight: 'bold', m: 1 }}>{name}
-</Box>
+            <Box sx={{ textTransform: "uppercase", fontWeight: "bold", m: 1 }}>
+              {name}
+            </Box>
           </Typography>
         </Link>
 
@@ -111,24 +114,26 @@ export default function ShopProductCard({ product }) {
               }}
             ></Typography>
             <Box
-        sx={{
-          flexWrap: 'wrap',
-          display: 'flex',
-          flexDirection: 'row',
-          p: 0,
-          m: 0,
-          bgcolor: 'background.paper',
-          borderRadius: 0,
-        }}
-      >
-            {skills.map((s)=><Item>{s}</Item>)}
+              sx={{
+                flexWrap: "wrap",
+                display: "flex",
+                flexDirection: "row",
+                p: 0,
+                m: 0,
+                bgcolor: "background.paper",
+                borderRadius: 0,
+              }}
+            >
+              {skills.map((s) => (
+                <Item>{s}</Item>
+              ))}
             </Box>
           </Typography>
         </Stack>
       </Stack>
       <CardActions>
-        <Button size="small">Postuler</Button>
-        <Button size="small">Détails</Button>
+        <Button size="small">Apply</Button>
+        <Button size="small">Details</Button>
       </CardActions>
     </Card>
   );

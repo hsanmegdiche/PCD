@@ -77,11 +77,11 @@ class Yminlogin extends React.Component {
     return (
       <div style={{ width: "400px", paddingLeft: "400px" }}>
         <pre>
-          <Star texte="Accéder à votre compte" />
+          <Star texte="Access your account" />
           <form>
             <TextField
               fullWidth
-              label="Entrer votre email"
+              label="Enter your email"
               type="email"
               id="email"
               name="email"
@@ -91,7 +91,7 @@ class Yminlogin extends React.Component {
             <br />
             <TextField
               fullWidth
-              label="Entrer votre mot de passe"
+              label="Enter vour password"
               type="password"
               id="userPassword"
               name="password"
@@ -101,7 +101,7 @@ class Yminlogin extends React.Component {
             <br />
             <TextField
               type="submit"
-              value="Envoyer"
+              value="Submit"
               onClick={this.handleSubmit}
               align="middle"
             />

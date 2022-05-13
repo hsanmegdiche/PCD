@@ -1,0 +1,12 @@
+<label>
+              <Typography>Your role</Typography>
+              <br />
+              <select
+                name="role"
+                value={this.state.value}
+                onChange={(e) => this.handlerole(e)}
+              >
+                <option value="Student">Student</option>
+                <option value="Recruiter">Recruiter</option>
+              </select>
+            </label>

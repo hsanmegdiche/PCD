@@ -40,7 +40,7 @@ export default function offer() {
             <AssignmentIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Créer une offre
+            Create an offer
           </Typography>
           <br></br>
           <br></br>
@@ -102,12 +102,12 @@ export default function offer() {
             />
             <br></br> <br></br>
             <TextField
-              label="Durée"
+              label="Duration"
               id="outlined-start-adornment"
               sx={{ width: 450 }}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">mois</InputAdornment>
+                  <InputAdornment position="start">month</InputAdornment>
                 ),
               }}
             />

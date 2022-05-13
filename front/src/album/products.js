@@ -3,27 +3,27 @@ import { faker } from "@faker-js/faker";
 // ----------------------------------------------------------------------
 
 const PRODUCT_NAME = [
-  'frontend developer',
-  'backend developer',
-  'machine learning engineer',
-  'data scientist',
-  'embedded software engineer',
-  'security analyst',
-  'business intelligence analyst' ,
-  'devops engineer'
+  "frontend developer",
+  "backend developer",
+  "machine learning engineer",
+  "data scientist",
+  "embedded software engineer",
+  "security analyst",
+  "business intelligence analyst",
+  "devops engineer",
 ];
-const skills=[
-  ["Reactjs",'html','css'],
-  ['Nodejs','Express','Mongodb'],
-  ['tensorflow','python'],
-  ['Python','SQL','PySpark'],
-  [''],
-  [''],
-  [''],
-  []
-]
+const skills = [
+  ["Reactjs", "html", "css"],
+  ["Nodejs", "Express", "Mongodb"],
+  ["tensorflow", "python"],
+  ["Python", "SQL", "PySpark"],
+  [""],
+  [""],
+  [""],
+  [],
+];
 // ----------------------------------------------------------------------
-const status=["zabour", "", "", "Postulé","Postulé","","","Postulé"]
+const status = ["Applied", "", "", "Applied", "Applied", "", "", "Applied"];
 const products = [...Array(8)].map((_, index) => {
   const setIndex = index + 1;
 
@@ -32,7 +32,7 @@ const products = [...Array(8)].map((_, index) => {
     cover: `/mock-images/products/product_${setIndex}.jpg`,
     name: PRODUCT_NAME[index],
     status: status[index],
-    skills: skills[index]
+    skills: skills[index],
   };
 });
 

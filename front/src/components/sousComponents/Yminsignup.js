@@ -3,7 +3,11 @@ import validator from "validator";
 import { TextField } from "@material-ui/core";
 import Star from "./Star.js";
 import axios from "axios";
-
+import { Autocomplete, Typography } from "@mui/material";
+const t = [
+  { label: "Recruiter", year: 1994 },
+  { label: "Student", year: 1972 },
+];
 class Yminsignup extends React.Component {
   constructor() {
     super();
@@ -93,11 +97,11 @@ class Yminsignup extends React.Component {
     return (
       <div style={{ width: "400px", paddingLeft: "400px" }}>
         <pre>
-          <Star texte="Créer un nouveau compte" />
+          <Star texte="Create a new account" />
           <form>
             <TextField
               fullWidth
-              label="name:"
+              label="Firstname"
               type="name"
               id="Name"
               name="name"
@@ -106,34 +110,26 @@ class Yminsignup extends React.Component {
             <br />
             <TextField
               fullWidth
-              label="lastname:"
+              label="Lastname"
               type="name"
               id="lastname"
               name="lastname"
               onChange={(e) => this.handlelastName(e)}
             />
             <br />
-            <br />
-
-            <label>
-              Your role <br />
-              <br />
-              <select
-                name="role"
-                value={this.state.value}
-                onChange={(e) => this.handlerole(e)}
-              >
-                <option value="Student">Student</option>
-                <option value="Recruiter">Recruiter</option>
-              </select>
-            </label>
-
-            <br />
-            <br />
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={t}
+              sx={{ fullWidth: true }}
+              renderInput={(params) => (
+                <TextField {...params} label="Your role" />
+              )}
+            />
 
             <TextField
               fullWidth
-              label="Entrer votre mail"
+              label="Enter your email"
               type="text"
               id="userEmail"
               name="email"
@@ -144,7 +140,7 @@ class Yminsignup extends React.Component {
             <br />
             <TextField
               fullWidth
-              label="Entrer votre mot de passe"
+              label="Enter vour password"
               type="password"
               id="userPassword"
               name="password"
@@ -153,7 +149,7 @@ class Yminsignup extends React.Component {
             <br />
             <TextField
               fullWidth
-              label="Confimer votre mot de passe"
+              label="Confirm your password"
               type="password"
               id="userConfirm"
               name="confirm"
@@ -164,7 +160,7 @@ class Yminsignup extends React.Component {
             <br />
             <TextField
               type="submit"
-              value="Envoyer"
+              value="Submit"
               onClick={this.handleSubmit}
               align="middle"
             />
