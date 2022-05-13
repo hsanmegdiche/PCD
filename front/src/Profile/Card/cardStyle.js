@@ -7,12 +7,12 @@ import {
 const cardStyle = {
   card: {
     border: "0",
-    marginBottom: "30px",
+    marginBottom: "0",
     marginTop: "30px",
-    borderRadius: "6px",
+    borderRadius: "0",
     color: "rgba(" + hexToRgb(blackColor) + ", 0.87)",
     background: whiteColor,
-    width: "100%",
+    width: "150%",
     boxShadow: "0 1px 4px 0 rgba(" + hexToRgb(blackColor) + ", 0.14)",
     position: "relative",
     display: "flex",

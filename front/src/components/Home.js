@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Album from "../album/Albums";
 import { GlobalState } from "./GlobalState";
 import ButtonMezyen from "./sousComponents/ButtonMezyen";
+import Footer from "../layout/Footer";
 function Home1() {
   return (
     <div>

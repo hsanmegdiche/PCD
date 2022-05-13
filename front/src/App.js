@@ -12,6 +12,7 @@ import { DataProvider, GlobalState } from "./components/GlobalState";
 import Header from "./layout/Header";
 import UserProfile from "./Profile/UserProfile";
 import TableList from "./TableList/TableList";
+import Footer from "./layout/Footer";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/aboutthis" element={<AboutThis />} />
         <Route path="/anonymous" element={<Anonymous />} />
       </Routes>
+      <Footer />
     </DataProvider>
   );
 }
