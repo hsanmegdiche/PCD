@@ -6,6 +6,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { GlobalState } from "../components/GlobalState";
 import Logout from "../components/Logout";
 import InfoIcon from "@mui/icons-material/Info";
+import AccountPopover from "../logo/AccountPopover";
 
 function Header() {
   const state = useContext(GlobalState);
@@ -20,15 +21,10 @@ function Header() {
         <IconButton href="/">
           <HomeIcon color="primary" />
         </IconButton>
-        <Link
-          to="/aboutthis"
-          style={{ textDecoration: "none", marginLeft: "1350px" }}
-        >
-          <IconButton>
-            <InfoIcon color="inherit" />
-          </IconButton>
-        </Link>
-        {isLogged && <Logout />}
+
+        <div style={{ textDecoration: "none", marginLeft: "1370px" }}>
+          {isLogged && <AccountPopover />}
+        </div>
       </Toolbar>
     </AppBar>
   );

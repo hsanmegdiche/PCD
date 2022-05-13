@@ -102,9 +102,9 @@ function ButtonMezyen(props) {
     },
     {
       url: "https://docs.microsoft.com/en-us/windows/apps/design/style/images/header-color.svg",
-      title: "Do it anonymously",
+      title: "About this",
       width: "40%",
-      siteurl: "/anonymous",
+      siteurl: "/aboutthis",
     },
   ];
 

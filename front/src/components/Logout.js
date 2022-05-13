@@ -1,4 +1,4 @@
-import { IconButton } from "@mui/material";
+import { IconButton, MenuItem } from "@mui/material";
 import React, { useContext } from "react";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import axios from "axios";
@@ -20,8 +20,8 @@ export default function Logout() {
     }
   };
   return (
-    <IconButton onClick={handleSubmit} edge="end">
-      <LogoutOutlinedIcon fontSize="inherit" color="primary" />
-    </IconButton>
+    <MenuItem onClick={handleSubmit} sx={{ m: 1 }}>
+      Logout
+    </MenuItem>
   );
 }
