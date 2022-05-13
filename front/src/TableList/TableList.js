@@ -25,8 +25,7 @@ const styles = {
   cardTitleWhite: {
     color: "#FFFFFF",
     marginTop: "0px",
-    minHeight: "auto",
-    fontWeight: "300",
+    fontWeight: "3000",
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
     marginBottom: "3px",
     textDecoration: "none",
@@ -49,35 +48,19 @@ export default function TableList() {
         <Card plain>
           <CardHeader plain color="info">
             <h4 className={classes.cardTitleWhite}>
-              Table on Plain Background
-            </h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p>
+Classement            </h4>
+
           </CardHeader>
           <CardBody>
             <Table
               tableHeaderColor="info"
               tableHead={["Rank", "Name", "Email", "Score", "CV"]}
               tableData={[
-                ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-                ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-                ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-                [
-                  "4",
-                  "Philip Chaney",
-                  "$38,735",
-                  "Korea, South",
-                  "Overland Park",
-                ],
-                [
-                  "5",
-                  "Doris Greene",
-                  "$63,542",
-                  "Malawi",
-                  "Feldkirchen in Kärnten",
-                ],
-                ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"],
+                ["1", "Hsan Megdiche", "Hsan.megdiche@ensi-uma.tn", "87", <a href='/somefile.txt' download>CV.pdf</a>
+              ],
+                ["2", "Sami Ellouze", "sami.ellouze@ensi-uma.tn", "69",  <a href='/somefile.txt' download>CV.pdf</a>],
+                ["3", "Mahdi Trabelsi", "mahdi.trabelsi@ensi-uma.tn", "45",  <a href='/somefile.txt' download>CV.pdf</a>],
+                
               ]}
             />
           </CardBody>
