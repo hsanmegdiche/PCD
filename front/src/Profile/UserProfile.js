@@ -15,7 +15,7 @@ import CardFooter from "./Card/CardFooter.js";
 
 import avatar from "./user.jpg";
 import { Grid } from "@material-ui/core";
-import UploadButton from "../components/UploadButton.js";
+import UploadButton from "../components/UploadCV.js";
 
 const styles = {
   cardCategoryWhite: {

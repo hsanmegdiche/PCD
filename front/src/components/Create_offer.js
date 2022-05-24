@@ -15,7 +15,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import { green } from "@mui/material/colors";
 import Autocomplete from "@mui/material/Autocomplete";
 import InputAdornment from "@mui/material/InputAdornment";
-import UploadButton from "./UploadButton";
+import UploadButton from "./UploadPDF";
 
 const theme = createTheme();
 
