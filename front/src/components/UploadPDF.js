@@ -18,6 +18,9 @@ const Input = styled("input")({
 
 export default function UploadButton() {
   const [loading, setLoading] = React.useState(false);
+  function handleClick() {
+    setLoading(true);
+  }
   const handleUpload = async (e) => {
     e.preventDefault();
     try {
@@ -51,9 +54,15 @@ export default function UploadButton() {
           multiple
           type="file"
         />
-        <Button variant="outlined" component="span">
-          Upload PDF version
-        </Button>
+        <LoadingButton
+          variant="outlined"
+          component="span"
+          loading={loading}
+          onClick={handleClick}
+          loadingIndicator="Loading..."
+        >
+          Upload PDF Version
+        </LoadingButton>
       </label>
     </Stack>
   );
