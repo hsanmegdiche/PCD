@@ -11,13 +11,13 @@ const OfferSchema = new mongoose.Schema({
     trim: true,
   },
   skills: {
-    type: String,
+    type: Array,
     required: true,
 
     trim: true,
   },
 Languages:{
-    type: String,
+    type: Array,
     required: true,
 
     trim: true,
