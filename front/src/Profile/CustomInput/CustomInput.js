@@ -26,7 +26,6 @@ export default function CustomInput(props) {
     success,
     rtlActive,
   } = props;
-
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,
     [" " + classes.labelRootSuccess]: success && !error,
@@ -38,7 +37,7 @@ export default function CustomInput(props) {
     [classes.underline]: true,
   });
   const marginTop = classNames({
-    [classes.marginTop]: labelText === undefined,
+    [classes.marginTop]: labelText === "asba",
   });
   let newInputProps = {
     maxLength:
@@ -62,6 +61,7 @@ export default function CustomInput(props) {
         </InputLabel>
       ) : null}
       <Input
+        defaultValue={props.val}
         classes={{
           root: marginTop,
           disabled: classes.disabled,
@@ -70,6 +70,7 @@ export default function CustomInput(props) {
         id={id}
         {...inputProps}
         inputProps={newInputProps}
+        onChange={(e) => props.handleInputData(e.target.value)}
       />
     </FormControl>
   );

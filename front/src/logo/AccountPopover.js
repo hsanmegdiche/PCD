@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 // @mui
 import { alpha } from "@mui/material/styles";
@@ -18,6 +18,7 @@ import MenuPopover from "./MenuPopover";
 import account from "./account";
 import Logout from "../components/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { GlobalState } from "../components/GlobalState";
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
@@ -35,7 +36,11 @@ const MENU_OPTIONS = [
 
 // ----------------------------------------------------------------------
 
-export default function AccountPopover() {
+function AccountPopover() {
+  const state = useContext(GlobalState);
+  const name = state.userApi.name;
+  const lastName = state.userApi.lastname;
+  const email = state.userApi.email;
   const anchorRef = useRef(null);
 
   const [open, setOpen] = useState(null);
@@ -89,10 +94,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+            {name + " " + lastName}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-            {account.email}
+            {email}
           </Typography>
         </Box>
 
@@ -118,3 +123,4 @@ export default function AccountPopover() {
     </>
   );
 }
+export default AccountPopover;

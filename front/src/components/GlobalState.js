@@ -5,6 +5,7 @@ export const GlobalState = createContext();
 
 export const DataProvider = ({ children }) => {
   const [token, setToken] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const firstLogin = localStorage.getItem("firstLogin");
@@ -18,11 +19,13 @@ export const DataProvider = ({ children }) => {
         }, 10 * 60 * 1000);
       };
       refreshToken();
+      setLoading(false);
     }
   }, []);
 
   const state = {
     token: [token, setToken],
+    loading: [loading, setLoading],
     userApi: UserApi(token),
   };
 

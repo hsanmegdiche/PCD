@@ -121,31 +121,34 @@ const userCtrl = {
     }
   },
   update: async (req, res) => {
-    const { github,phone, id } = req.body;
-   
-        await Student.findById(id)
-          .then((user) => {
-            // Third - Verifies the user is not an admin
-              user.github = github;
-              user.phone=phone
-              user.save((err) => {
-                //Monogodb error checker
-                if (err) {
-                  res
-                    .status("400")
-                    .json({ message: "An error occurred", error: err.message });
-                  process.exit(1);
-                }
-                res.status("201").json({ message: "Update successful", user });
-              });
-             
-          })
-          .catch((error) => {
+    const { name, lastname, email, github, phone, id } = req.body;
+
+    await Student.findById(id)
+      .then((user) => {
+        // Third - Verifies the user is not an admin
+        if (name) user.name = name;
+        if (lastname) user.lastname = lastname;
+        if (email) user.email = email;
+        if (github) user.github = github;
+        if (phone) user.phone = phone;
+
+        user.save((err) => {
+          //Monogodb error checker
+          if (err) {
             res
-              .status(400)
-              .json({ message: "An error occurred", error: error.message });
-          });
-        }
+              .status("400")
+              .json({ message: "An error occurred", error: err.message });
+            process.exit(1);
+          }
+          res.status("201").json({ message: "Update successful", user });
+        });
+      })
+      .catch((error) => {
+        res
+          .status(400)
+          .json({ message: "An error occurred", error: error.message });
+      });
+  },
 };
 const createAccessToken = (user) => {
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
@@ -157,7 +160,5 @@ const createRefreshToken = (user) => {
     expiresIn: "7d",
   });
 };
-
-
 
 module.exports = userCtrl;
