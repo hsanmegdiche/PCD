@@ -13,12 +13,14 @@ import Header from "./layout/Header";
 import UserProfile from "./Profile/UserProfile";
 import TableList from "./TableList/TableList";
 import Footer from "./layout/Footer";
-
+import Upload from "./components/sousComponents/Upload";
 function App() {
   return (
     <DataProvider>
       <Header />
       <Routes>
+      <Route path="/upload" element={<Upload />} />
+
         <Route path="/offer" element={<Form />} />
         <Route path="/classement" element={<TableList />} />
         <Route path="/profile" element={<UserProfile />} />
