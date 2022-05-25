@@ -37,7 +37,7 @@ export default function CustomInput(props) {
     [classes.underline]: true,
   });
   const marginTop = classNames({
-    [classes.marginTop]: labelText === "asba",
+    [classes.marginTop]: labelText === undefined,
   });
   let newInputProps = {
     maxLength:
