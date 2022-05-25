@@ -1,11 +1,13 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import UserApi from "./UserApi";
+
 export const GlobalState = createContext();
 
 export const DataProvider = ({ children }) => {
   const [token, setToken] = useState(false);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const firstLogin = localStorage.getItem("firstLogin");

@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
-import Album from "../album/Albums";
+import React, { useContext} from "react";
+import Album from "../Album";
 import { GlobalState } from "./GlobalState";
 import ButtonMezyen from "./sousComponents/ButtonMezyen";
-import Footer from "../layout/Footer";
+
+
 function Home1() {
   return (
     <div>
@@ -20,11 +21,20 @@ function Home1() {
     </div>
   );
 }
-function Home() {
-  const state = useContext(GlobalState);
-  const [isLogged] = state.userApi.isLogged;
-  const [isAdmin] = state.userApi.isAdmin;
-  const [id] = state.userApi.id;
-  return <div>{isLogged ? <Album /> : <Home1 />}</div>;
+
+ function Home ()  {
+  const state =  useContext(GlobalState);
+  const [isLogged] = state.userApi.isLogged
+  
+ if (isLogged){
+  return (<div>
+    {<Album />}
+    </div>)
+ }
+  else{
+    return (<div>
+      {<Home1 />}
+      </div>)
+  }
 }
 export default Home;

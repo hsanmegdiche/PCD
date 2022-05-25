@@ -10,26 +10,25 @@ import AboutThis from "./components/AboutThis.js";
 import Anonymous from "./components/Anonymous.js";
 import { DataProvider, GlobalState } from "./components/GlobalState";
 import Header from "./layout/Header";
-import UserProfile from "./Profile/UserProfile";
-import TableList from "./TableList/TableList";
-import Footer from "./layout/Footer";
-import Upload from "./components/sousComponents/Upload";
+import Create_offer from "./components/Create_offer";
+import Offer from "./components/Offer.js";
+import Footer from "./layout/Footer"
 function App() {
   return (
     <DataProvider>
       <Header />
       <Routes>
-      <Route path="/upload" element={<Upload />} />
+      <Route path="/continue_signup" element={<Form />} />
 
-        <Route path="/offer" element={<Form />} />
-        <Route path="/classement" element={<TableList />} />
-        <Route path="/profile" element={<UserProfile />} />
         <Route path="/" element={<Home />} />
         <Route path="/getuser" element={<UserApi />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/aboutthis" element={<AboutThis />} />
         <Route path="/anonymous" element={<Anonymous />} />
+        <Route path="/create_offer" element={<Create_offer/>} />
+        <Route path="/Offres/1" element={<Offer/>} />
+
       </Routes>
       <Footer />
     </DataProvider>

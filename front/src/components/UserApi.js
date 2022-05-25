@@ -6,6 +6,7 @@ function UserApi(token) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [user, setUser] = useState("");
   const [id, setId] = useState(0);
+  const [kammel, setkammel] = useState(false);
   useEffect(() => {
     if (token) {
       const getUser = async () => {
@@ -19,6 +20,7 @@ function UserApi(token) {
           setIsLogged(true);
           setIsAdmin(res.data.role === 1);
           setUser(res.data);
+          setkammel(true)
           setId(res.data._id);
         } catch (err) {
           alert(err.data.msg);
@@ -44,6 +46,7 @@ function UserApi(token) {
     }
   };
   return {
+    kammel:[kammel,setkammel],
     isAdmin: [isAdmin, setIsAdmin],
     isLogged: [isLogged, setIsLogged],
     user: [user, setUser],
