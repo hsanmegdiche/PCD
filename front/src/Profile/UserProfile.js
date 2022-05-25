@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -16,6 +16,8 @@ import CardFooter from "./Card/CardFooter.js";
 import avatar from "./user.jpg";
 import { Grid } from "@material-ui/core";
 import UploadButton from "../components/UploadCV.js";
+import axios from "axios";
+import { GlobalState } from "../components/GlobalState.js";
 
 const styles = {
   cardCategoryWhite: {
@@ -37,8 +39,32 @@ const styles = {
 };
 
 const useStyles = makeStyles(styles);
-
-export default function UserProfile() {
+function UserProfile() {
+  const state = useContext(GlobalState);
+  const Name = state.userApi.name;
+  const [git, setGit] = useState("");
+  const [num, setNum] = useState("");
+  const [name, setName] = useState(Name);
+  const [lastName, setlastName] = useState("");
+  const [email, setEmail] = useState("");
+  // States for registration
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const [id] = await state.userApi.id;
+      await axios.post("/user/update", {
+        id: id,
+        name: name,
+        lastname: lastName,
+        email: email,
+        github: git,
+        phone: num,
+      });
+      window.location.href = "/profile";
+    } catch (err) {
+      alert(err.response.data.msg);
+    }
+  };
   const classes = useStyles();
   return (
     <div>
@@ -53,11 +79,13 @@ export default function UserProfile() {
               <GridContainer>
                 <GridItem xs={12} sm={12} md={5}>
                   <CustomInput
-                    labelText="First Name"
+                    value={name}
+                    labelText={Name}
                     id="first-name"
                     formControlProps={{
                       fullWidth: true,
                     }}
+                    handleInputData={setName}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -67,6 +95,7 @@ export default function UserProfile() {
                     formControlProps={{
                       fullWidth: true,
                     }}
+                    handleInputData={setlastName}
                   />
                 </GridItem>
               </GridContainer>
@@ -78,6 +107,7 @@ export default function UserProfile() {
                     formControlProps={{
                       fullWidth: true,
                     }}
+                    handleInputData={setEmail}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -87,16 +117,21 @@ export default function UserProfile() {
                     formControlProps={{
                       fullWidth: true,
                     }}
+                    handleInputData={setGit}
                   />
                 </GridItem>
+
                 <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Phone Number"
-                    id="number"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                  />
+                  <div>
+                    <CustomInput
+                      labelText="Phone Number"
+                      id="number"
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      handleInputData={setNum}
+                    />
+                  </div>
                 </GridItem>
               </GridContainer>
               <UploadButton />
@@ -104,7 +139,9 @@ export default function UserProfile() {
             <CardFooter>
               <GridContainer>
                 <GridItem>
-                  <Button color="info">Update Profile</Button>
+                  <Button color="info" onClick={handleSubmit}>
+                    Update Profile
+                  </Button>
                 </GridItem>
               </GridContainer>
             </CardFooter>
@@ -114,3 +151,4 @@ export default function UserProfile() {
     </div>
   );
 }
+export default UserProfile;

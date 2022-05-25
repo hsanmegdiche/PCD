@@ -47,6 +47,11 @@ function UserApi(token) {
     isAdmin: [isAdmin, setIsAdmin],
     isLogged: [isLogged, setIsLogged],
     user: [user, setUser],
+    name: user.name,
+    lastname: user.lastname,
+    email: user.email,
+    phone: user.phone,
+    github: user.github,
     id: [id, setId],
   };
 }
