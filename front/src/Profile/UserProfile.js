@@ -41,10 +41,9 @@ const styles = {
 const useStyles = makeStyles(styles);
 function UserProfile() {
   const state = useContext(GlobalState);
-  const Name = state.userApi.name;
   const [git, setGit] = useState("");
   const [num, setNum] = useState("");
-  const [name, setName] = useState(Name);
+  const [name, setName] = useState("");
   const [lastName, setlastName] = useState("");
   const [email, setEmail] = useState("");
   // States for registration
@@ -79,8 +78,8 @@ function UserProfile() {
               <GridContainer>
                 <GridItem xs={12} sm={12} md={5}>
                   <CustomInput
-                    value={name}
-                    labelText={Name}
+                    val="Hsan"
+                    labelText="First Name"
                     id="first-name"
                     formControlProps={{
                       fullWidth: true,
@@ -90,6 +89,7 @@ function UserProfile() {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
+                    val="Megdiche"
                     labelText="Last Name"
                     id="last-name"
                     formControlProps={{
@@ -102,6 +102,7 @@ function UserProfile() {
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
+                    val="hsan.megdiche@ensi-uma.tn"
                     labelText="Email"
                     id="email"
                     formControlProps={{

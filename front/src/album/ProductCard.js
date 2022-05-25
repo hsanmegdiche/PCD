@@ -14,6 +14,7 @@ import { styled } from "@mui/material/styles";
 // utils
 // components
 import Label from "./Label";
+import { useState } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -68,7 +69,7 @@ Item.propTypes = {
 };
 export default function ShopProductCard({ product }) {
   const { name, cover, status, skills } = product;
-
+  const [dis, setDis] = useState(status == "Applied");
   return (
     <Card>
       <Box sx={{ pt: "100%", position: "relative" }}>
@@ -132,7 +133,9 @@ export default function ShopProductCard({ product }) {
         </Stack>
       </Stack>
       <CardActions>
-        <Button size="small">Apply</Button>
+        <Button size="small" disabled={dis} onClick={() => setDis(true)}>
+          Apply
+        </Button>
         <Button size="small">Details</Button>
       </CardActions>
     </Card>
