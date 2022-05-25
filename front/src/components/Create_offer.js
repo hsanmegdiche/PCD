@@ -1,4 +1,4 @@
-import * as React from "react";
+import react,{useState} from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -19,9 +19,30 @@ import UploadButton from "./UploadPDF";
 
 const theme = createTheme();
 
-export default function offer() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+export default function Offer() {
+  const [offer_title, setof] = useState("");
+    const [description, setde] = useState("");
+    const [skills, setsk] = useState("");
+    const [Languages, setla] = useState("");
+    const [pdf, setpd] = useState("");
+    const [duration, setdu] = useState("");
+
+  const handlede = (e) => {
+    setde(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // const res = await axios.post("/offer/create", {
+    //   offer_title,description,skills,Languages,pdf,duration
+
+    // });
+    console.log(offer_title);
+    console.log(description);
+
+    console.log(skills);
+    console.log(Languages);
+    console.log(duration);
   };
 
   return (
