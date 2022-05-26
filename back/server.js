@@ -34,7 +34,7 @@ app.use(
 app.use(cookieParser());
 app.use("/user", require("./routes/user"));
 app.use("/offer", require("./routes/offer"));
-
+app.use("/user", require("./routes/getscore"));
 app.use("/api", require("./routes/upload"));
 //app.use("/recruiter", require("./routes/recruiter"));
 
