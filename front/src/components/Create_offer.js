@@ -21,16 +21,17 @@ const theme = createTheme();
 
 export default function Offer() {
   const [offer_title, setof] = useState("");
-    const [description, setde] = useState("");
-    const [skills, setsk] = useState("");
-    const [Languages, setla] = useState("");
-    const [pdf, setpd] = useState("");
-    const [duration, setdu] = useState("");
-
+  const [description, setde] = useState("");
+  const [skills, setsk] = useState("");
+  const [languages, setla] = useState("");
+  const [pdf, setpd] = useState("");
+  const [duration, setdu] = useState("");
+  const handledu = (e) => {
+    setdu(e.target.value);
+  };
   const handlede = (e) => {
     setde(e.target.value);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     // const res = await axios.post("/offer/create", {
@@ -41,10 +42,9 @@ export default function Offer() {
     console.log(description);
 
     console.log(skills);
-    console.log(Languages);
+    console.log(languages);
     console.log(duration);
   };
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -74,6 +74,9 @@ export default function Offer() {
           >
             <Autocomplete
               disablePortal
+              onChange={(event, value) => {
+                setof(value.label);
+              }}
               id="combo-box-demo"
               options={JD}
               sx={{ width: 450 }}
@@ -85,6 +88,8 @@ export default function Offer() {
             <TextField
               id="outlined-multiline-flexible"
               label="Description"
+              onChange={handlede}
+
               multiline
               sx={{ width: 450 }}
               minRows={3}
@@ -96,6 +101,9 @@ export default function Offer() {
               multiple
               id="tags-standard"
               options={technicalskills}
+              onChange={(event, value) => {
+                setsk(value);
+              }}
               getOptionLabel={(option) => option.title}
               renderInput={(params) => (
                 <TextField
@@ -110,6 +118,9 @@ export default function Offer() {
             <Autocomplete
               multiple
               id="tags-standard"
+              onChange={(event, value) => {
+                setla(value);
+              }}
               options={Languages}
               getOptionLabel={(option) => option.title}
               renderInput={(params) => (
@@ -124,8 +135,11 @@ export default function Offer() {
             <br></br> <br></br>
             <TextField
               label="Duration"
+              
               id="outlined-start-adornment"
               sx={{ width: 450 }}
+              onChange={handledu}
+
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">month</InputAdornment>
